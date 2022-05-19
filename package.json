@@ -1,0 +1,16 @@
+{
+  "name": "create-new-wp-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^8.0.3",
+    "readline-sync": "^1.4.10"
+  }
+}
