@@ -6,6 +6,14 @@
  * @since 1.0.0
  */
 
+// Security: Prevent direct access to this file
+defined('ABSPATH') || die();
+
+/**
+ * The public class
+ * 
+ * @since 1.0.0
+ */
 class <%= template.class %>_Public
 {
     private $plugin_name;

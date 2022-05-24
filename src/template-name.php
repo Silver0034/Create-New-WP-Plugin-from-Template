@@ -15,8 +15,8 @@
  * Author URI:     https://www.earlenterprise.com/
  */
 
-// stop if called directly
-if (!defined('WPINC')) die;
+// Security: Prevent direct access to this file
+defined('ABSPATH') || die();
 
 // define plugin version constant
 define('<%= template.const %>_VERSION', '1.0.0');

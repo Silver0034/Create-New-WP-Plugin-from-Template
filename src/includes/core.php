@@ -6,6 +6,9 @@
  * @since 1.0.0
  */
 
+// Security: Prevent direct access to this file
+defined('ABSPATH') || die();
+
 /**
  * The core plugin class
  * @since 1.0.0
