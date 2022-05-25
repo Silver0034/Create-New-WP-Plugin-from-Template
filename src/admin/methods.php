@@ -1,20 +1,23 @@
 <?php
 
 /**
- * All public functions
+ * All admin functions
  * 
  * @since 1.0.0
  */
+
+// define namespace
+namespace <%= template.namespace %>\Admin;
 
 // Security: Prevent direct access to this file
 defined('ABSPATH') || die();
 
 /**
- * The public class
+ * The admin class
  * 
  * @since 1.0.0
  */
-class <%= template.class %>_Public
+class Methods
 {
     private $plugin_name;
     private $version;

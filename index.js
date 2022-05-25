@@ -36,6 +36,9 @@ function generate_template_strings() {
 	// create variant of the name file-system / slug friendly
 	template.slug = inputs.name.replaceAll(' ', '-').toLowerCase()
 
+	// create a variant with no spaces for namespace
+	template.namespace = inputs.name.replaceAll(' ', '')
+
 	return template
 }
 
@@ -57,6 +60,7 @@ function generateFile(template, srcFile) {
 		.replaceAll('<%= template.var %>', template.var)
 		.replaceAll('<%= template.const %>', template.const)
 		.replaceAll('<%= template.slug %>', template.slug)
+		.replaceAll('<%= template.namespace %>', template.namespace)
 
 	// replace path with new path
 	const distFile = updateDistPath(template, srcFile)

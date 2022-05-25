@@ -6,6 +6,9 @@
  * @since 1.0.0
  */
 
+// define namespace
+namespace <%= template.namespace %>\Activate;
+
 // Security: Prevent direct access to this file
 defined('ABSPATH') || die();
 
@@ -13,7 +16,7 @@ defined('ABSPATH') || die();
  * The activator class
  * @since 1.0.0
  */
-class <%= template.class %>_Activator
+class Methods
 {
     /**
      * the code to run on activate

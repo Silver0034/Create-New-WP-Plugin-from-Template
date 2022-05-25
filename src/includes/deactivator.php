@@ -6,6 +6,9 @@
  * @since 1.0.0
  */
 
+// define namespace
+namespace <%= template.namespace %>\Deactivate;
+
 // Security: Prevent direct access to this file
 defined('ABSPATH') || die();
 
@@ -14,7 +17,7 @@ defined('ABSPATH') || die();
  * 
  * @since 1.0.0
  */
-class <%= template.class %>_Deactivator
+class Methods
 {
     /**
      * the code to run on deactivate

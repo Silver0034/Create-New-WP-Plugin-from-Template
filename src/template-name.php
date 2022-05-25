@@ -15,6 +15,13 @@
  * Author URI:     https://www.earlenterprise.com/
  */
 
+// define namespace
+namespace <%= template.namespace %>;
+
+use <%= template.namespace %>\Activate as Activate;
+use <%= template.namespace %>\Deactivate as Deactivate;
+use <%= template.namespace %>\Core as Core;
+
 // Security: Prevent direct access to this file
 defined('ABSPATH') || die();
 
@@ -22,30 +29,31 @@ defined('ABSPATH') || die();
 define('<%= template.const %>_VERSION', '1.0.0');
 
 // activator functions
-function activate_<%= template.var %>()
+function activate()
 {
     // require and run the activator from includes
     require_once plugin_dir_path(__FILE__) . 'includes/activator.php';
-    <%= template.class %>_Activator::activate();
+
+   Activate\Methods::activate();
 }
-register_activation_hook(__FILE__, 'activate_<%= template.var %>');
+register_activation_hook(__FILE__, '<%= template.namespace %>\activate');
 
 // deactivator functions
-function deactivate_<%= template.var %>()
+function deactivate()
 {
     // require and run the deactivator from includes
     require_once plugin_dir_path(__FILE__) . 'includes/deactivator.php';
-    <%= template.class %>_Deactivator::deactivate();
+    Deactivate\Methods::deactivate();
 }
-register_deactivation_hook(__FILE__, 'deactivate_<%= template.var %>');
+register_deactivation_hook(__FILE__, '<%= template.namespace %>\deactivate');
 
 // require core includes file
 require_once plugin_dir_path(__FILE__) . 'includes/core.php';
 
 // run the function
-function run_<%= template.var %>()
+function run()
 {
-    $plugin = new <%= template.class %>();
+    $plugin = new Core\Methods();
     $plugin->run();
 }
-run_<%= template.var %>();
+run();

@@ -6,6 +6,13 @@
  * @since 1.0.0
  */
 
+// define namespace
+namespace <%= template.namespace %>\Core;
+
+use <%= template.namespace %>\Admin as Admin;
+use <%= template.namespace %>\FrontEnd as FrontEnd;
+use <%= template.namespace %>\Loader as Loader;
+
 // Security: Prevent direct access to this file
 defined('ABSPATH') || die();
 
@@ -13,7 +20,7 @@ defined('ABSPATH') || die();
  * The core plugin class
  * @since 1.0.0
  */
-class <%= template.class %>
+class Methods
 {
     protected $loader;
     protected $plugin_name;
@@ -37,8 +44,8 @@ class <%= template.class %>
         // define admin hooks
         $this->define_admin_hooks();
 
-        // define public hooks
-        $this->define_public_hooks();
+        // define front end hooks
+        $this->define_front_end_hooks();
     }
 
     /**
@@ -52,13 +59,13 @@ class <%= template.class %>
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/loader.php';
 
         // require admin file
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/admin.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/methods.php';
 
-        // require public file
-        require_once plugin_dir_path(dirname(__FILE__)) . 'public/public.php';
+        // require front end file
+        require_once plugin_dir_path(dirname(__FILE__)) . 'front-end/methods.php';
 
         // create instance of loader
-        $this->loader = new <%= template.class %>_Loader();
+        $this->loader = new Loader\Methods();
     }
 
     /**
@@ -69,20 +76,20 @@ class <%= template.class %>
     private function define_admin_hooks()
     {
         // get instance of admin
-        $admin = new <%= template.class %>_Admin($this->get_plugin_name(), $this->get_version());
+        $admin = new Admin\Methods($this->get_plugin_name(), $this->get_version());
 
         // add hooks
     }
 
     /**
-     * Register public hooks
+     * Register front end hooks
      * 
      * @since 1.0.0
      */
-    private function define_public_hooks()
+    private function define_front_end_hooks()
     {
         // get instance of admin
-        $public = new <%= template.class %>_Public($this->get_plugin_name(), $this->get_version());
+        $front_end = new FrontEnd\Methods($this->get_plugin_name(), $this->get_version());
 
         // add hooks
     }

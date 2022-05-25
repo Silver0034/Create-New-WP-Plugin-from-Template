@@ -9,11 +9,11 @@ const cleanCSS = require('gulp-clean-css')
 const globs = {
 	input: {
 		admin: './admin/scss/**/*.scss',
-		public: './public/scss/**/*.scss'
+		frontEnd: './front-end/scss/**/*.scss'
 	},
 	output: {
 		admin: './admin/css',
-		public: './public/css'
+		frontEnd: './front-end/css'
 	}
 }
 
@@ -32,8 +32,8 @@ function buildAdminStyles(cb) {
 	cb()
 }
 
-function buildPublicStyles(cb) {
-	buildStyles(globs.input.public, globs.output.public)
+function buildFrontEndStyles(cb) {
+	buildStyles(globs.input.frontEnd, globs.output.frontEnd)
 	cb()
 }
 
@@ -42,14 +42,14 @@ gulp.task('admin', (cb) => {
 	cb()
 })
 
-gulp.task('public', (cb) => {
-	buildStyles(globs.input.public, globs.output.public)
+gulp.task('front-end', (cb) => {
+	buildStyles(globs.input.frontEnd, globs.output.frontEnd)
 	cb()
 })
 
 gulp.task('default', (cb) => {
 	buildStyles(globs.input.admin, globs.output.admin)
-	buildStyles(globs.input.public, globs.output.public)
+	buildStyles(globs.input.frontEnd, globs.output.frontEnd)
 	cb()
 })
 
@@ -57,11 +57,11 @@ gulp.task('watch-admin', () => {
 	gulp.watch(globs.input.admin, buildAdminStyles)
 })
 
-gulp.task('watch-public', () => {
-	gulp.watch(globs.input.public, buildPublicStyles)
+gulp.task('watch-front-end', () => {
+	gulp.watch(globs.input.frontEnd, buildFrontEndStyles)
 })
 
 gulp.task('watch', () => {
 	gulp.watch(globs.input.admin, buildAdminStyles)
-	gulp.watch(globs.input.public, buildPublicStyles)
+	gulp.watch(globs.input.frontEnd, buildFrontEndStyles)
 })
