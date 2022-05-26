@@ -5,6 +5,9 @@ const gulp = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const sourcemaps = require('gulp-sourcemaps')
 const cleanCSS = require('gulp-clean-css')
+const glob = require('glob')
+const path = require('path')
+const fs = require('fs')
 
 const globs = {
 	input: {
@@ -36,6 +39,48 @@ function buildFrontEndStyles(cb) {
 	buildStyles(globs.input.frontEnd, globs.output.frontEnd)
 	cb()
 }
+
+function buildDist() {
+	// get plugin directory name
+	const directory = path.basename(__dirname)
+
+	// empty the dist folder
+	if (fs.existsSync('dist')) {
+		fs.rmSync('dist', {
+			recursive: true,
+			force: true
+		})
+	}
+
+	// make dist directory
+	fs.mkdirSync('dist')
+	fs.mkdirSync('dist/' + directory)
+
+	// get files
+	const files = glob.sync('**/*', {
+		ignore: ['*.json', '*.js', '.*', '**/node_modules/**', '**/scss/**']
+	})
+
+	// copy files
+	for (let i = 0; i < files.length; i++) {
+		const file = files[i]
+		const output = `./dist/${directory}/${file}`
+
+		if (!fs.statSync(file).isFile()) {
+			fs.mkdirSync(output)
+			continue
+		}
+
+		fs.copyFile(file, output, (err) => {
+			if (err) throw err
+		})
+	}
+}
+
+gulp.task('build', (cb) => {
+	buildDist()
+	cb()
+})
 
 gulp.task('admin', (cb) => {
 	buildStyles(globs.input.admin, globs.output.admin)
