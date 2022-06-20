@@ -58,7 +58,14 @@ function buildDist() {
 
 	// get files
 	const files = glob.sync('**/*', {
-		ignore: ['*.json', '*.js', '.*', '**/node_modules/**', '**/scss/**']
+		ignore: [
+			'*.json',
+			'*.js',
+			'.*',
+			'**/node_modules/**',
+			'**/scss/**',
+			'**/dist/**'
+		]
 	})
 
 	// copy files
