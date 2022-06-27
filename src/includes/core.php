@@ -7,7 +7,7 @@
  */
 
 // define namespace
-namespace <%= template.namespace %>\Core;
+namespace <%= template.namespace %>;
 
 use <%= template.namespace %>\Admin as Admin;
 use <%= template.namespace %>\FrontEnd as FrontEnd;
@@ -20,11 +20,28 @@ defined('ABSPATH') || die();
  * The core plugin class
  * @since 1.0.0
  */
-class Methods
+class Core
 {
     protected $loader;
     protected $plugin_name;
     protected $version;
+    protected static $instance = NULL;
+
+    /**
+     * Get the existing instance of the class
+     * 
+     * @since 1.0.0
+     */
+    public static function get_instance()
+    {
+        // create an object
+        if (NULL === self::$instance) {
+            self::$instance = new self;
+        }
+
+        // return the instance of the class
+        return self::$instance;
+    }
     /**
      * Core plugin constructor
      * 
@@ -65,7 +82,7 @@ class Methods
         require_once plugin_dir_path(dirname(__FILE__)) . 'front-end/methods.php';
 
         // create instance of loader
-        $this->loader = new Loader\Methods();
+        $this->loader = Loader::get_instance();
     }
 
     /**
@@ -76,7 +93,7 @@ class Methods
     private function define_admin_hooks()
     {
         // get instance of admin
-        $admin = new Admin\Methods($this->get_plugin_name(), $this->get_version());
+        $admin = Admin::get_instance($this->get_plugin_name(), $this->get_version());
 
         // add hooks
     }
@@ -89,7 +106,7 @@ class Methods
     private function define_front_end_hooks()
     {
         // get instance of admin
-        $front_end = new FrontEnd\Methods($this->get_plugin_name(), $this->get_version());
+        $front_end = FrontEnd::get_instance($this->get_plugin_name(), $this->get_version());
 
         // add hooks
     }

@@ -18,8 +18,8 @@
 // define namespace
 namespace <%= template.namespace %>;
 
-use <%= template.namespace %>\Activate as Activate;
-use <%= template.namespace %>\Deactivate as Deactivate;
+use <%= template.namespace %>\Activator as Activator;
+use <%= template.namespace %>\Deactivator as Deactivator;
 use <%= template.namespace %>\Core as Core;
 
 // Security: Prevent direct access to this file
@@ -34,7 +34,8 @@ function activate()
     // require and run the activator from includes
     require_once plugin_dir_path(__FILE__) . 'includes/activator.php';
 
-   Activate\Methods::activate();
+    $activator = Activator::get_instance();
+    $activator->activate();
 }
 register_activation_hook(__FILE__, '<%= template.namespace %>\activate');
 
@@ -43,7 +44,9 @@ function deactivate()
 {
     // require and run the deactivator from includes
     require_once plugin_dir_path(__FILE__) . 'includes/deactivator.php';
-    Deactivate\Methods::deactivate();
+
+    $deactivator = Deactivator::get_instance();
+    $deactivator->deactivate();
 }
 register_deactivation_hook(__FILE__, '<%= template.namespace %>\deactivate');
 
@@ -53,7 +56,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/core.php';
 // run the function
 function run()
 {
-    $plugin = new Core\Methods();
+    $plugin = Core::get_instance();
     $plugin->run();
 }
 run();
