@@ -24,6 +24,8 @@ class Activator
      * Get the existing instance of the class
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return <%= template.namespace %>\Activator The activator class
      */
     public static function get_instance()
     {
@@ -40,6 +42,8 @@ class Activator
      * the code to run on activate
      *
      * @since 1.0.0
+     * @version 1.0.0
+     * @return void
      */
     public function activate()
     {

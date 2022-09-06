@@ -4,6 +4,7 @@
  * The core for the plugin
  * 
  * @since 1.0.0
+ * @version 1.0.0
  */
 
 // define namespace
@@ -19,6 +20,7 @@ defined('ABSPATH') || die();
 /**
  * The core plugin class
  * @since 1.0.0
+ * @version 1.0.0
  */
 class Core
 {
@@ -31,6 +33,8 @@ class Core
      * Get the existing instance of the class
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return <%= template.namespace %>\Core The core class for the plugin
      */
     public static function get_instance()
     {
@@ -46,6 +50,8 @@ class Core
      * Core plugin constructor
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return void
      */
     public function __construct()
     {
@@ -69,6 +75,8 @@ class Core
      * Load dependencies
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return void
      */
     private function load_dependencies()
     {
@@ -89,6 +97,8 @@ class Core
      * Register admin hooks
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return void
      */
     private function define_admin_hooks()
     {
@@ -102,6 +112,8 @@ class Core
      * Register front end hooks
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return void
      */
     private function define_front_end_hooks()
     {
@@ -115,6 +127,8 @@ class Core
      * Run the loader
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return void
      */
     public function run()
     {
@@ -126,6 +140,8 @@ class Core
      * Get plugin name
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return string The plugin name
      */
     public function get_plugin_name()
     {
@@ -136,6 +152,8 @@ class Core
      * get loader
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return <%= template.namespace %>\Loader The plugin's loader class
      */
     public function get_loader()
     {
@@ -144,7 +162,9 @@ class Core
 
     /**
      * get the plugin version
-     * @since 
+     * @since 1.0.0
+     * @version 1.0.0
+     * @return string The plugin's version
      */
     public function get_version()
     {

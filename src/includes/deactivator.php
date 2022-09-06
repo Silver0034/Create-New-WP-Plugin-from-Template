@@ -4,6 +4,7 @@
  * Runs on plugin deactivation
  * 
  * @since 1.0.0
+ * @version 1.0.0
  */
 
 // define namespace
@@ -16,6 +17,7 @@ defined('ABSPATH') || die();
  * The deactivator class
  * 
  * @since 1.0.0
+ * @version 1.0.0
  */
 class Deactivator
 {
@@ -25,6 +27,8 @@ class Deactivator
      * Get the existing instance of the class
      * 
      * @since 1.0.0
+     * @version 1.0.0
+     * @return <%= template.namespace %>\Deavtivator The plugin's deactivator class
      */
     public static function get_instance()
     {
@@ -41,6 +45,8 @@ class Deactivator
      * the code to run on deactivate
      *
      * @since 1.0.0
+     * @version 1.0.0
+     * @return void
      */
     public function deactivate()
     {
