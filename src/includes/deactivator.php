@@ -28,7 +28,7 @@ class Deactivator
      * 
      * @since 1.0.0
      * @version 1.0.0
-     * @return <%= template.namespace %>\Deavtivator The plugin's deactivator class
+     * @return <%= template.namespace %>\Deactivator The plugin's deactivator class
      */
     public static function get_instance()
     {
