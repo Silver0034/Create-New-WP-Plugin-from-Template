@@ -180,7 +180,7 @@ function buildFrontEndFiles(cb) {
  * Build the distribution folder
  * @param function cb
  */
-gulp.task('dist', (cb) => {
+gulp.task('build', (cb) => {
 	buildDist()
 	cb()
 })
